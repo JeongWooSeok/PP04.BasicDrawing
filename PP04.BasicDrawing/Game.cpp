@@ -3,7 +3,6 @@
 bool Game::init(const char*title, int xpos, int yops, int width, int height, bool fullscree)
 {
 	m_bRunning = true;
-	// 각자 추가해 볼 것
 	if (SDL_Init(SDL_INIT_EVERYTHING) >= 0)
 	{
 		m_pWindow = SDL_CreateWindow("Wanna go home? Keep up pal.",
@@ -30,16 +29,14 @@ bool Game::init(const char*title, int xpos, int yops, int width, int height, boo
 
 void Game::render()
 {
-	//원본 사각형 : m_sourceRectangle, 대상 사각형: m_destinationRectangle
 	m_destinationRectangle.x = m_sourceRectangle.x = 0;
 	m_destinationRectangle.y = m_sourceRectangle.y = 0;
 	m_destinationRectangle.w = m_sourceRectangle.w;
 	m_destinationRectangle.h = m_sourceRectangle.h;
 
-	//clear the renderer to the draw color
-	SDL_RenderClear(m_pRenderer); // 원본 사각형과 대상 사각형의 위치와 크기에 따라 화면에 다르게 나타남
+	SDL_RenderClear(m_pRenderer);
 	SDL_RenderCopy(m_pRenderer, m_pTexture, &m_sourceRectangle, &m_destinationRectangle);
-	SDL_RenderPresent(m_pRenderer); // 화면 제시하기
+	SDL_RenderPresent(m_pRenderer);
 }
 
 void Game::clean()
